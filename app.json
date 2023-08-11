@@ -6,10 +6,6 @@
     "website": "https://github.com/BalaPriyan/FileStreamBot",
     "repository": "https://github.com/BalaPriyan/FileStreamBot",
   "env": {
-      "ENV": {
-          "description": "Set this to True if you don't want to crash the bot",
-          "value": "True"
-      },
       "APP_NAME": {
           "description": "Copy-Paste the app name that you just typed above."
       },
