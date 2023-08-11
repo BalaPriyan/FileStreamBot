@@ -1,21 +1,10 @@
 {
-  "name": "filetolink",
-  "description": "A Pyrogram Telegram bot to Stream Telegram files to web.",
-  "keywords": [
-      "telegram",
-      "stream",
-      "web",
-      "pyrogram",
-      "aiohttp",
-      "python",
-      "plugin",
-      "modular",
-      "media",
-      "bot"
-    ],
-  "repository": "https://github.com/BalaPriyan",
-  "success_url": "/",
-  "logo": "https://i.ibb.co/MnMZ1Sy/download-1.jpg",
+    "name": "filetolink",
+    "description": "the telegram File To Link bot",
+    "logo": "https://graph.org/file/b7e8484f6395a180b6380.jpg",
+    "keywords": ["telegram", "stream", "web", "pyrogram", "aiohttp", "python", "plugin", "modular", "media", "bot" ],
+    "website": "https://github.com/BalaPriyan/FileStreamBot",
+    "repository": "https://github.com/BalaPriyan/FileStreamBot",
   "env": {
       "ENV": {
           "description": "Set this to True if you don't want to crash the bot",
