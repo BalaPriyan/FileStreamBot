@@ -1,4 +1,3 @@
-# (c) adarsh-goel
 import os
 import sys
 import glob
@@ -24,13 +23,13 @@ logging.getLogger("aiohttp.web").setLevel(logging.ERROR)
 
 ppath = "Adarsh/bot/plugins/*.py"
 files = glob.glob(ppath)
+
 StreamBot.start()
 loop = asyncio.get_event_loop()
 
-
 async def start_services():
     print('\n')
-    print('------------------- Initalizing Telegram Bot -------------------')
+    print('------------------- Initializing Telegram Bot -------------------')
     bot_info = await StreamBot.get_me()
     StreamBot.username = bot_info.username
     print("------------------------------ DONE ------------------------------")
@@ -53,15 +52,19 @@ async def start_services():
             spec.loader.exec_module(load)
             sys.modules["Adarsh.bot.plugins." + plugin_name] = load
             print("Imported => " + plugin_name)
-    if Var.ON_KOYEB:
-        print("------------------ Starting Keep Alive Service ------------------")
-        print()
-        asyncio.create_task(ping_server())
-    print('-------------------- Initalizing Web Server -------------------------')
+    
+    print("------------------ Starting Keep Alive Service ------------------")
+    print()
+    asyncio.create_task(ping_server())
+    
+    print('-------------------- Initializing Web Server -------------------------')
     app = web.AppRunner(await web_server())
     await app.setup()
+    
     bind_address = "0.0.0.0" if Var.ON_KOYEB else Var.BIND_ADRESS
-    await web.TCPSite(app, bind_address, Var.PORT).start()
+    port = int(os.getenv("PORT", 8080)) if Var.ON_KOYEB else Var.PORT
+    await web.TCPSite(app, bind_address, port).start()
+    
     print('----------------------------- DONE ---------------------------------------------------------------------')
     print('\n')
     print('---------------------------------------------------------------------------------------------------------')
@@ -70,13 +73,11 @@ async def start_services():
     print('---------------------------------------------------------------------------------------------------------')
     print('\n')
     print('----------------------- Service Started -----------------------------------------------------------------')
-    print('                        bot =>> {}'.format((await StreamBot.get_me()).first_name))
-    print('                        server ip =>> {}:{}'.format(bind_address, Var.PORT))
-    print('                        Owner =>> {}'.format((Var.OWNER_USERNAME)))
-    if Var.ON_KOYEB:
-        print('                        app runnng on =>> {}'.format(Var.FQDN))
+    print(f'                        bot =>> {(await StreamBot.get_me()).first_name}')
+    print(f'                        server ip =>> {bind_address}:{port}')
+    print(f'                        Owner =>> {Var.OWNER_USERNAME}')
     print('---------------------------------------------------------------------------------------------------------')
-    print('Give a support to my Channel @TomenMain  also follow me for new bots')
+    print('Give support to my Channel @TomenMain and follow me for new bots')
     print('---------------------------------------------------------------------------------------------------------')
     await idle()
 
