@@ -53,14 +53,14 @@ async def start_services():
             spec.loader.exec_module(load)
             sys.modules["Adarsh.bot.plugins." + plugin_name] = load
             print("Imported => " + plugin_name)
-    if Var.ON_HEROKU:
+    if Var.ON_KOYEB:
         print("------------------ Starting Keep Alive Service ------------------")
         print()
         asyncio.create_task(ping_server())
     print('-------------------- Initalizing Web Server -------------------------')
     app = web.AppRunner(await web_server())
     await app.setup()
-    bind_address = "0.0.0.0" if Var.ON_HEROKU else Var.BIND_ADRESS
+    bind_address = "0.0.0.0" if Var.ON_KOYEB else Var.BIND_ADRESS
     await web.TCPSite(app, bind_address, Var.PORT).start()
     print('----------------------------- DONE ---------------------------------------------------------------------')
     print('\n')
@@ -73,7 +73,7 @@ async def start_services():
     print('                        bot =>> {}'.format((await StreamBot.get_me()).first_name))
     print('                        server ip =>> {}:{}'.format(bind_address, Var.PORT))
     print('                        Owner =>> {}'.format((Var.OWNER_USERNAME)))
-    if Var.ON_HEROKU:
+    if Var.ON_KOYEB:
         print('                        app runnng on =>> {}'.format(Var.FQDN))
     print('---------------------------------------------------------------------------------------------------------')
     print('Give a support to my Channel @TomenMain  also follow me for new bots')
