@@ -14,13 +14,13 @@ class Var(object):
     BOT_TOKEN = str(getenv('BOT_TOKEN'))
     name = str(getenv('name', 'tomen'))
     SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
-    WORKERS = int(getenv('WORKERS', '4'))
+    WORKERS = int(getenv('WORKERS', '5'))
     BIN_CHANNEL = int(getenv('BIN_CHANNEL'))
-    PORT = int(getenv('PORT', 8080))
+    PORT = int(getenv('PORT', 80))
     BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', '0.0.0.0'))
     PING_INTERVAL = int(environ.get("PING_INTERVAL", "1200"))  # 20 minutes
     OWNER_ID = set(int(x) for x in os.environ.get("OWNER_ID", "").split())  
-    NO_PORT = bool(getenv('NO_PORT', False))
+    NO_PORT = bool(getenv('NO_PORT', 80))
     APP_NAME = None
     OWNER_USERNAME = str(getenv('OWNER_USERNAME'))
     if 'KOYEB' in environ:
