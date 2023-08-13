@@ -12,7 +12,7 @@ class Var(object):
     API_ID = int(getenv('API_ID'))
     API_HASH = str(getenv('API_HASH'))
     BOT_TOKEN = str(getenv('BOT_TOKEN'))
-    name = str(getenv('name', 'filetolinkbot'))
+    name = str(getenv('name', 'tomen'))
     SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
     WORKERS = int(getenv('WORKERS', '4'))
     BIN_CHANNEL = int(getenv('BIN_CHANNEL'))
@@ -23,13 +23,12 @@ class Var(object):
     NO_PORT = bool(getenv('NO_PORT', False))
     APP_NAME = None
     OWNER_USERNAME = str(getenv('OWNER_USERNAME'))
-    if 'DYNO' in environ:
-        ON_HEROKU = True
-        APP_NAME = str(getenv('APP_NAME'))
-    
+    if 'KOYEB' in environ:
+        ON_KOYEB = True
+        APP_NAME = str(environ.get('APP_NAME'))
     else:
-        ON_HEROKU = False
-    FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
+        ON_KOYEB = False
+    FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_KOYEB or getenv('FQDN') else APP_NAME+'.koyeb.app'
     HAS_SSL=bool(getenv('HAS_SSL',False))
     if HAS_SSL:
         URL = "https://{}/".format(FQDN)
