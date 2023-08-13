@@ -49,7 +49,7 @@ async def login_handler(c: Client, m: Message):
 async def private_receive_handler(c: Client, m: Message):
     if MY_PASS:
         check_pass = await pass_db.get_user_pass(m.chat.id)
-        if check_pass== None:
+        if check_pass == None:
             await m.reply_text("Login first using /login cmd \n don\'t know the pass? request it from the Developer")
             return
         if check_pass != MY_PASS:
@@ -68,22 +68,21 @@ async def private_receive_handler(c: Client, m: Message):
                 await c.send_message(
                     chat_id=m.chat.id,
                     text="You are banned!\n\n  **Cᴏɴᴛᴀᴄᴛ Dᴇᴠᴇʟᴏᴘᴇʀ [Adarsh Goel](https://github.com/adarsh-goel) ʜᴇ Wɪʟʟ Hᴇʟᴘ Yᴏᴜ**",
-                    
                     disable_web_page_preview=True
                 )
                 return 
-    except UserNotParticipant:
-        await b.send_photo(
-            chat_id=m.chat.id,
-            photo="https://graph.org/file/d454b953103d42d759f8d.jpg",
-            text="To access the bot's features, please join the support channel by clicking the button below:",
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [button_support_channel]
-                ]
+        except UserNotParticipant:
+            await c.send_photo(
+                chat_id=m.chat.id,
+                photo="https://graph.org/file/d454b953103d42d759f8d.jpg",
+                text="To access the bot's features, please join the support channel by clicking the button below:",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [button_support_channel]
+                    ]
+                )
             )
-        )
-        return
+            return
 
     await b.send_message(
         chat_id=m.chat.id,
