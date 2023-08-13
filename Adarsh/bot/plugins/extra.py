@@ -1,19 +1,3 @@
-import time
-import shutil
-import psutil
-import platform
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from Adarsh.bot import StreamBot
-from utils_bot import *
-from Adarsh import StartTime
-
-total_users = 0
-
-def get_uptime():
-    uptime = time.time() - StartTime
-    return time.strftime("%H:%M:%S", time.gmtime(uptime))
-
-
 @StreamBot.on_message(filters.command("about"))
 async def about_handler(bot, message):
     user = message.from_user
@@ -44,7 +28,7 @@ async def show_feature_info(bot, callback_query):
                         "/help - Display help message\n"\
                         "/about - Show user and system information\n"\
                         "/ping - Measure bot's response time\n"\
-                        "/status - Display system status\n"\
+                        "/status - Display system status\n"
     elif feature == "ping":
         start_t = time.time()
         ag = await callback_query.message.reply_text("....")
@@ -91,7 +75,6 @@ async def show_feature_info(bot, callback_query):
     keyboard = InlineKeyboardMarkup(buttons)
     
     await callback_query.edit_message_text(detailed_info, reply_markup=keyboard, parse_mode="html")
-
 
 @StreamBot.on_callback_query(filters.regex("^about$"))
 async def back_to_about(bot, callback_query):
