@@ -45,7 +45,7 @@ async def show_feature_info(bot, callback_query):
                         "/about - Show user and system information\n"\
                         "/ping - Measure bot's response time\n"\
                         "/status - Display system status\n"\
-    elif feature == "ping":
+ elif feature == "ping":
         start_t = time.time()
         ag = await callback_query.message.reply_text("....")
         end_t = time.time()
