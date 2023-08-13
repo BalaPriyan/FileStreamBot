@@ -14,7 +14,7 @@ db = Database(Var.DATABASE_URL, Var.name)
 
 button_main_channel = InlineKeyboardButton("Main Channel", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
 button_owner = InlineKeyboardButton("Owner", url="https://t.me/MadAsGhost")
-button_support_channel = InlineKeyboardButton("Join Support Channel", url=f"https://t.me/{Var.SUPPORT_CHANNEL}")
+button_support_channel = InlineKeyboardButton("Join Support Channel", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
 
 buttons = [
     [button_main_channel],
